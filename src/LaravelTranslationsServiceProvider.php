@@ -79,6 +79,7 @@ class LaravelTranslationsServiceProvider extends ServiceProvider
                 Commands\PublishCommand::class,
                 Commands\ImportTranslationsCommand::class,
                 Commands\ExportTranslationsCommand::class,
+                Commands\sendEmail::class,
             ]);
         }
     }

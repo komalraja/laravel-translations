@@ -18,13 +18,18 @@ class PhraseForm extends Component
 
     public Translation $translation;
 
+
     public function mount(Translation $translation, Phrase $phrase): void
     {
+        
         $this->phrase = $phrase;
         $this->translation = $translation;
 
         $this->content = $phrase?->value;
+
     }
+
+   
 
     public function save(): void
     {
@@ -46,7 +51,7 @@ class PhraseForm extends Component
 
         $this->notification()->success('Phrase updated successfully!');
 
-        $nextPhrase = $this->translation->phrases()
+        /*$nextPhrase = $this->translation->phrases()
             ->where('id', '>', $this->phrase->id)
             ->whereNull('value')
             ->first();
@@ -58,9 +63,9 @@ class PhraseForm extends Component
             ]));
 
             return;
-        }
+        }*/
 
-        $this->redirect(route('translations_ui.phrases.index', $this->translation));
+        //$this->redirect(route('translations_ui.phrases.index', $this->translation));
     }
 
     public function missingParameters(): bool
@@ -75,9 +80,10 @@ class PhraseForm extends Component
 
         return false;
     }
-
+    
     public function render(): View
     {
         return view('translations::livewire.phrase-form');
+            
     }
 }

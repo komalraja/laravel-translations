@@ -43,6 +43,7 @@ return new class extends Migration
             $table->text('group');
             $table->text('value')->nullable();
             $table->json('parameters')->nullable();
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }
@@ -53,6 +54,7 @@ return new class extends Migration
      * @return void
      */
     public function down()
+
     {
         Schema::dropIfExists('ltu_phrases');
         Schema::dropIfExists('ltu_translation_files');

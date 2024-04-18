@@ -15,3 +15,16 @@ Route::controller(TranslationController::class)
                 Route::get('{translation}/edit/{phrase:uuid}', 'phrase')->name('show');
             });
     });
+
+
+// Route for approval
+
+Route::controller(MailController::class)
+->as('translations_ui.')
+->group(function () {
+    Route::prefix('phrases')
+        ->as('phrases.')
+        ->group(function () {
+            Route::get('/approve-phrase/{id}', 'MailController@approvePhrase')->name('approve');
+        });
+});
